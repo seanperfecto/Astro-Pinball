@@ -1,0 +1,87 @@
+body {
+  background: #be93c5;
+  background: -webkit-linear-gradient(to right, #be93c5, #7bc6cc);
+  background: linear-gradient(to right, #be93c5, #7bc6cc);
+}
+
+/*header {
+  font-family: 'Bungee Outline', cursive;
+  font-size: 72px;
+  color: white;
+  width: 100%;
+  margin: 0 auto;
+  text-align: center;
+}*/
+
+canvas {
+    background-color: rgba(0, 0, 0, 0.2);
+    display: block;
+    background-size: cover;
+    margin: 0 20px;
+}
+
+.pinball-container {
+  margin-top: 40px;
+  display: flex;
+  justify-content: center;
+}
+
+.score {
+  background-color: rgba(0, 0, 0, 0.2);
+  width: 230px;
+}
+
+.info {
+  background-color: rgba(0, 0, 0, 0.2);
+  width: 230px;
+  height: 100%;
+  color: white;
+  text-decoration: none;
+  text-align: center;
+
+}
+
+.info h1 {
+  padding-top: 20px;
+  font-family: 'Bungee Outline', cursive;
+  font-size: 40px;
+  color: white;
+  width: 100%;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.info p {
+  font-family: 'helvetica', sans-serif;
+  font-size: 14px;
+}
+
+.info a {
+  color: white;
+}
+
+.info a:visited {
+  color: white;
+}
+
+.info i {
+  font-size: 26px;
+  margin-bottom: 20px;
+}
+
+.score {
+  font-family: 'helvetica', sans-serif;
+  font-size: 18px;
+  color: white;
+  text-align: center;
+  padding-top: 20px;
+  height: 100%;
+}
+
+#test, #high {
+  display: inline;
+}
+
+span {
+  font-size: 13px;
+}

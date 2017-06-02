@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Minimal Pinball</title>
+    <link rel="stylesheet" type="text/css" href="./assets/pinball.css">
+    <script type="text/javascript" src="bundle.js" charset="utf-8"></script>
+    <link rel="icon" type="image/png" href="favicon-32x32.png" sizes="32x32" />
+    <link rel="icon" type="image/png" href="favicon-16x16.png" sizes="16x16" />
+    <link href="https://fonts.googleapis.com/css?family=Bungee+Outline" rel="stylesheet">
+    <script src="https://use.fontawesome.com/147c19f748.js"></script>
+
+  </head>
+  <body>
+    <div class='pinball-container'>
+      <div class="info">
+        <h1>MINIMAL<br>PINBALL</h1>
+        <p>Created By: Sean Perfecto</p>
+        <a href="www.github.com/seanperfecto"><i class="fa fa-github" aria-hidden="true"></i></a>
+        <a href="www.linkedin.com/in/seanperfecto"><i class="fa fa-linkedin-square" aria-hidden="true"></i></a>
+      </div>
+      <canvas id="myCanvas"></canvas>
+      <div class="score">
+        Current Score: <div id="test"></div><br>
+        High Score: <div id="high"></div><br><br>
+        <span>Controls:<br>
+        &darr;: Launch Pinball<br>
+        &larr;: Left Flipper<br>
+        &rarr;: Right Flipper<br>
+        Space: Restart Game<br>
+        m: (Un)mute Audio</span><br>
+
+        <br>
+      </div>
+    </div>
+    <audio autoplay loop id='audio'>
+      <source src="https://s3-us-west-1.amazonaws.com/melody-dev/background.wav" type="audio/wav">
+      Your browser does not support the audio element.
+    </audio>
+
+    <audio id='bell'>
+      <source src="assets/longbell1.wav" type="audio/wav">
+      Your browser does not support the audio element.
+    </audio>
+    <audio id='thud'>
+      <source src="assets/thud.wav" type="audio/wav">
+      Your browser does not support the audio element.
+    </audio>
+
+  </body>
+</html>
