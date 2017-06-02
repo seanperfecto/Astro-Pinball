@@ -68,6 +68,28 @@ return ((dx*dx)+(dy*dy)<=(this.radius*this.radius));
 
 #### Elastic Collision Outcome
 
-The second challenge after detecting collisions is changing the ball's velocity after colliding with an object.
+The second challenge after detecting collisions is changing the pinball's velocity after colliding with an object. Most of my collisions redirect the ball's velocity vector through calculating the changed direction due to the interaction between the normalized velocity vector and the normalized vector of contact of the object.
+
+```javascript
+// ball.js
+// Collision with the flipper
+let dd = (this.dnorm.x*obj.vnorm.x + this.dnorm.y*obj.vnorm.y)*2;
+this.refl = {x: (obj.vnorm.x * dd - this.dnorm.x),
+                  y: (obj.vnorm.y * dd - this.dnorm.y) };
+let length = Math.sqrt(this.refl.x*this.refl.x + this.refl.y*this.refl.y);
+this.ballPosY -= 4;
+this.ballVelX = (this.refl.x/length) * this.speed;
+this.ballVelY = ((this.refl.y/length) * this.speed * 1.1);
+
+```
+This equation above takes the dot product of the two vectors and integrates that into the new reflected velocity vector of the ball. I also had to change the ball's position slightly to simulate the ball only hitting the edge of the flipper. Lastly, I added some additional speed on the ball after to give the game a faster pace.
 
 ## Future Features
+
+With this game implement in a week, there are a couple of bugs that I want to fix and features that I want to change and add. Some possible ideas that I want to implement to the game include:
+
+- Right now, the thruster is affect the ball through different angles, yet its flipper velocity is not taken account for. I want to take account its velocity and time and adjust the ball's speed through it.
+
+- Polish the collision detections. I want to make the ball collision smoother and just be one single collision with the different objects (right now the ball interacts with the object sometimes several times upon collision, causing a weird motion).
+
+- Later on, I would want to add different transition effects when playing the game (without any libraries would be preferred).
