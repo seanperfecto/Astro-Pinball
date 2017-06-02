@@ -1,6 +1,8 @@
 # Minimal Pinball
 
-This pure Javascript and HTML game strips down a classic arcade game into a more visually appealing, and simple yet addicting web browser game.
+[LIVE LINK](https://seanperfecto.github.io/Pinball/)
+
+This pure Javascript and HTML game strips down a classic arcade game into a more visually appealing and simple (yet addicting) web browser game.
 
 ![screencast](assets/screencast.png)
 

@@ -341,56 +341,59 @@ var _createClass = function () { function defineProperties(target, props) { for 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 var GameView = function () {
-  function GameView(game, ctx) {
-    _classCallCheck(this, GameView);
+    function GameView(game, ctx) {
+        _classCallCheck(this, GameView);
 
-    this.game = game;
-    this.ctx = ctx;
-  }
-
-  _createClass(GameView, [{
-    key: 'start',
-    value: function start() {
-      this.lastTime = 0;
-      requestAnimationFrame(this.animate.bind(this));
+        this.game = game;
+        this.ctx = ctx;
     }
-  }, {
-    key: 'animate',
-    value: function animate(time) {
-      var timeDiff = time - this.lastTime;
-      this.game.step(timeDiff);
-      this.game.draw(this.ctx);
-      this.lastTime = time;
 
-      requestAnimationFrame(this.animate.bind(this));
-    }
-  }]);
+    _createClass(GameView, [{
+        key: 'start',
+        value: function start() {
+            this.lastTime = 0;
+            requestAnimationFrame(this.animate.bind(this));
+        }
+    }, {
+        key: 'animate',
+        value: function animate(time) {
+            var timeDiff = time - this.lastTime;
+            this.game.step(timeDiff);
+            this.game.draw(this.ctx);
+            this.lastTime = time;
 
-  return GameView;
+            requestAnimationFrame(this.animate.bind(this));
+        }
+    }]);
+
+    return GameView;
 }();
 
 document.addEventListener("keydown", muteHandler, false);
 
 function muteHandler(e) {
-  if (e.keyCode === 77) {
-    muteAudio();
-  }
+    if (e.keyCode === 77) {
+        muteAudio();
+    }
 }
 
 function muteAudio() {
-  var audio = document.getElementById('audio');
-  var bell = document.getElementById('bell');
-  var thud = document.getElementById('thud');
+    var audio = document.getElementById('audio');
+    var bell = document.getElementById('bell');
+    var thud = document.getElementById('thud');
+    var flip = document.getElementById('flip');
 
-  if (audio.muted === false) {
-    document.getElementById('audio').muted = true;
-    document.getElementById('bell').muted = true;
-    document.getElementById('thud').muted = true;
-  } else {
-    document.getElementById('audio').muted = false;
-    document.getElementById('bell').muted = false;
-    document.getElementById('thud').muted = false;
-  }
+    if (audio.muted === false) {
+        document.getElementById('audio').muted = true;
+        document.getElementById('bell').muted = true;
+        document.getElementById('thud').muted = true;
+        document.getElementById('flip').muted = true;
+    } else {
+        document.getElementById('audio').muted = false;
+        document.getElementById('bell').muted = false;
+        document.getElementById('thud').muted = false;
+        document.getElementById('flip').muted = false;
+    }
 }
 
 module.exports = GameView;
@@ -574,6 +577,7 @@ var Ball = function () {
     key: 'playBumpSound',
     value: function playBumpSound() {
       var x = document.getElementById('bell');
+      x.volume = 0.3;
       x.play();
     }
   }, {
@@ -583,9 +587,10 @@ var Ball = function () {
       this.refl = { x: obj.vnorm.x * dd - this.dnorm.x,
         y: obj.vnorm.y * dd - this.dnorm.y };
       var length = Math.sqrt(this.refl.x * this.refl.x + this.refl.y * this.refl.y);
-      this.ballPosY += 5;
+      this.ballPosY -= 8;
       this.ballVelX = this.refl.x / length * this.speed;
       this.ballVelY = this.refl.y / length * this.speed * 1.04;
+      this.playBumpSound();
     }
   }, {
     key: 'hitbackTriangle',
@@ -710,6 +715,13 @@ var LeftFlipper = function () {
     value: function flipLeftUp(ctx) {
       this.posY -= 15;
       this.mid = { x: 170, y: (this.posY + 480) / 2 };
+      this.playFlip();
+    }
+  }, {
+    key: "playFlip",
+    value: function playFlip() {
+      var x = document.getElementById('flip');
+      x.play();
     }
   }, {
     key: "flipLeftDown",
@@ -1151,6 +1163,13 @@ var RightFlipper = function () {
     value: function flipRightUp(ctx) {
       this.posY -= 15;
       this.mid = { x: 170, y: (this.posY + 480) / 2 };
+      this.playFlip();
+    }
+  }, {
+    key: "playFlip",
+    value: function playFlip() {
+      var x = document.getElementById('flip');
+      x.play();
     }
   }, {
     key: "flipRightDown",
