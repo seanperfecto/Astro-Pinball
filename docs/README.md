@@ -12,7 +12,6 @@ With my version of pinball, users will be able to:
 
 - [ ] Start, pause, and reset the game
 - [ ] Control the flippers with different type of keys
-- [ ] Change the different color styles in options
 
 In addition to this, the project will also include:
 
