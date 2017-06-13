@@ -341,59 +341,60 @@ var _createClass = function () { function defineProperties(target, props) { for 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 var GameView = function () {
-    function GameView(game, ctx) {
-        _classCallCheck(this, GameView);
+  function GameView(game, ctx) {
+    _classCallCheck(this, GameView);
 
-        this.game = game;
-        this.ctx = ctx;
+    this.game = game;
+    this.ctx = ctx;
+  }
+
+  _createClass(GameView, [{
+    key: 'start',
+    value: function start() {
+      this.lastTime = 0;
+      requestAnimationFrame(this.animate.bind(this));
+      // setInterval(this.animate(60), 60);
     }
+  }, {
+    key: 'animate',
+    value: function animate(time) {
+      var timeDiff = time - this.lastTime;
+      this.game.step(timeDiff);
+      this.game.draw(this.ctx);
+      this.lastTime = time;
 
-    _createClass(GameView, [{
-        key: 'start',
-        value: function start() {
-            this.lastTime = 0;
-            requestAnimationFrame(this.animate.bind(this));
-        }
-    }, {
-        key: 'animate',
-        value: function animate(time) {
-            var timeDiff = time - this.lastTime;
-            this.game.step(timeDiff);
-            this.game.draw(this.ctx);
-            this.lastTime = time;
+      requestAnimationFrame(this.animate.bind(this));
+    }
+  }]);
 
-            requestAnimationFrame(this.animate.bind(this));
-        }
-    }]);
-
-    return GameView;
+  return GameView;
 }();
 
 document.addEventListener("keydown", muteHandler, false);
 
 function muteHandler(e) {
-    if (e.keyCode === 77) {
-        muteAudio();
-    }
+  if (e.keyCode === 77) {
+    muteAudio();
+  }
 }
 
 function muteAudio() {
-    var audio = document.getElementById('audio');
-    var bell = document.getElementById('bell');
-    var thud = document.getElementById('thud');
-    var flip = document.getElementById('flip');
+  var audio = document.getElementById('audio');
+  var bell = document.getElementById('bell');
+  var thud = document.getElementById('thud');
+  var flip = document.getElementById('flip');
 
-    if (audio.muted === false) {
-        document.getElementById('audio').muted = true;
-        document.getElementById('bell').muted = true;
-        document.getElementById('thud').muted = true;
-        document.getElementById('flip').muted = true;
-    } else {
-        document.getElementById('audio').muted = false;
-        document.getElementById('bell').muted = false;
-        document.getElementById('thud').muted = false;
-        document.getElementById('flip').muted = false;
-    }
+  if (audio.muted === false) {
+    document.getElementById('audio').muted = true;
+    document.getElementById('bell').muted = true;
+    document.getElementById('thud').muted = true;
+    document.getElementById('flip').muted = true;
+  } else {
+    document.getElementById('audio').muted = false;
+    document.getElementById('bell').muted = false;
+    document.getElementById('thud').muted = false;
+    document.getElementById('flip').muted = false;
+  }
 }
 
 module.exports = GameView;
@@ -428,6 +429,8 @@ var Ball = function () {
     this.ballVelX = 0;
     this.ballVelY = 0;
     this.elasticity = elasticity;
+    this.bounced = false;
+    this.bouncedTwo = false;
   }
 
   _createClass(Ball, [{
@@ -527,8 +530,20 @@ var Ball = function () {
   }, {
     key: 'isCollidedWithBumpers',
     value: function isCollidedWithBumpers(obj) {
+      var _this = this;
+
       var distance = Math.sqrt(Math.pow(this.ballPosX - obj.ballPosX, 2) + Math.pow(this.ballPosY - obj.ballPosY, 2));
-      return distance < this.radius + obj.radius;
+      if (distance < this.radius + obj.radius && this.bounced === false) {
+        console.log('hey');
+        this.bounced = true;
+        setTimeout(function () {
+          console.log('supma');
+          _this.bounced = false;
+        }, 200);
+        return true;
+      } else {
+        return false;
+      }
     }
   }, {
     key: 'hitbackBumper',
@@ -552,8 +567,8 @@ var Ball = function () {
       // if (angle < 0) {
       //   angle = 2*Math.PI + angle;
       // }
-
-      // New Position of ball
+      //
+      // // New Position of ball
       // if (this.ballPosX < obj.ballPosX) {
       //     this.ballPosX = this.ballPosX - Math.abs( (this.radius + obj.radius)*Math.cos(angle));
       //     if (this.ballPosY < obj.ballPosY) {
@@ -569,6 +584,7 @@ var Ball = function () {
       //   this.ballPosY = this.ballPosY + Math.abs( (this.radius + obj.radius)*Math.sin(angle));
       // }
       // }
+
       this.ballVelX = this.refl.x / length * this.speed * 1.01;
       this.ballVelY = this.refl.y / length * this.speed * 1.01;
       this.playBumpSound();
@@ -768,9 +784,9 @@ var BumperOne = function () {
       ctx.fillStyle = grd;
       ctx.fill();
       ctx.closePath();
-      ctx.font = "40px Helvetica";
+      ctx.font = "40px Bungee Outline";
       ctx.fillStyle = "white";
-      ctx.fillText("5", 144, 232);
+      ctx.fillText("5", 142, 234);
     }
   }]);
 
@@ -814,9 +830,9 @@ var BumperTwo = function () {
       ctx.fillStyle = grd;
       ctx.fill();
       ctx.closePath();
-      ctx.font = "40px Helvetica";
+      ctx.font = "40px Bungee Outline";
       ctx.fillStyle = "white";
-      ctx.fillText("5", 314, 232);
+      ctx.fillText("5", 312, 234);
     }
   }]);
 
@@ -860,9 +876,9 @@ var BumperThree = function () {
       ctx.fillStyle = grd;
       ctx.fill();
       ctx.closePath();
-      ctx.font = "40px Helvetica";
+      ctx.font = "40px Bungee Outline";
       ctx.fillStyle = "white";
-      ctx.fillText("7", 230, 134);
+      ctx.fillText("7", 228, 136);
     }
   }]);
 
@@ -915,7 +931,7 @@ var LeftBump = function () {
       ctx.lineTo(120, 450);
       ctx.lineTo(50, 370);
       ctx.fill();
-      ctx.font = "30px Helvetica";
+      ctx.font = "30px Bungee Outline";
       ctx.fillStyle = "white";
       ctx.fillText("3", 60, 430);
     }
@@ -1016,7 +1032,7 @@ var LeftBump = function () {
       ctx.lineTo(420, 450);
       ctx.lineTo(420, 370);
       ctx.fill();
-      ctx.font = "30px Helvetica";
+      ctx.font = "30px Bungee Outline";
       ctx.fillStyle = "white";
       ctx.fillText("3", 395, 430);
     }
