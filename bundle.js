@@ -534,10 +534,8 @@ var Ball = function () {
 
       var distance = Math.sqrt(Math.pow(this.ballPosX - obj.ballPosX, 2) + Math.pow(this.ballPosY - obj.ballPosY, 2));
       if (distance < this.radius + obj.radius && this.bounced === false) {
-        console.log('hey');
         this.bounced = true;
         setTimeout(function () {
-          console.log('supma');
           _this.bounced = false;
         }, 200);
         return true;
@@ -635,17 +633,34 @@ var Ball = function () {
       }
 
       // Distance definitely colliding
-      if (distX <= obj.halfwidthTwo) {
+      if (distX <= obj.halfwidthTwo && this.bouncedTwo === false) {
+        this.changeBounce();
         return true;
       }
-      if (distY <= obj.halfheightTwo) {
+      if (distY <= obj.halfheightTwo && this.bouncedTwo === false) {
+        this.changeBounce();
         return true;
       }
 
       // Checks corners using Pythagorean Theorem
       var dx = distX - obj.halfwidthTwo;
       var dy = distY - obj.halfheightTwo;
-      return dx * dx + dy * dy <= this.radius * this.radius;
+      if (dx * dx + dy * dy <= this.radius * this.radius && this.bouncedTwo === false) {
+        this.changeBounce();
+        return true;
+      } else {
+        return false;
+      }
+    }
+  }, {
+    key: 'changeBounce',
+    value: function changeBounce() {
+      var _this2 = this;
+
+      this.bouncedTwo = true;
+      setTimeout(function () {
+        _this2.bouncedTwo = false;
+      }, 200);
     }
   }, {
     key: 'collidewithSideBump',
