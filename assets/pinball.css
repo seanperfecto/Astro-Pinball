@@ -1,7 +1,6 @@
 body {
-  background: #be93c5;
-  background: -webkit-linear-gradient(to right, #be93c5, #7bc6cc);
-  background: linear-gradient(to right, #be93c5, #7bc6cc);
+  background-image: url('http://res.cloudinary.com/dqr2mejhc/image/upload/c_scale,w_626/v1497818772/space_back_2_keyyer.png');
+  background-repeat: repeat;
 }
 
 /*header {
@@ -14,9 +13,9 @@ body {
 }*/
 
 canvas {
-    background-color: rgba(0, 0, 0, 0.2);
+    background-image: url('http://res.cloudinary.com/dqr2mejhc/image/upload/c_scale,w_612/v1497818771/canvas_back_qu92rm.png');
     display: block;
-    background-size: cover;
+    background-repeat: repeat;
     margin: 0 20px;
 }
 
@@ -27,12 +26,12 @@ canvas {
 }
 
 .score {
-  background-color: rgba(0, 0, 0, 0.2);
+  background-color: #304D5B;
   width: 230px;
 }
 
 .info {
-  background-color: rgba(0, 0, 0, 0.2);
+  background-color: #304D5B;
   width: 230px;
   height: 100%;
   color: white;
@@ -42,6 +41,7 @@ canvas {
 }
 
 .info h1 {
+  color: #D74F43 !important;
   padding-top: 20px;
   font-family: 'Bungee Outline', cursive;
   font-size: 40px;
@@ -50,6 +50,7 @@ canvas {
   margin: 0 auto;
   text-align: center;
 }
+
 
 .info p {
   font-family: 'helvetica', sans-serif;
@@ -69,6 +70,10 @@ canvas {
   margin-bottom: 20px;
 }
 
+.info i:hover {
+  color: #D74F43;
+}
+
 .score {
   font-family: 'helvetica', sans-serif;
   font-size: 18px;
@@ -84,4 +89,12 @@ canvas {
 
 span {
   font-size: 13px;
+}
+
+#earth {
+  display: none;
+}
+
+#controls {
+  color: #D74F43;
 }

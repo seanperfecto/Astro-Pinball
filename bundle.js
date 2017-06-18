@@ -436,9 +436,11 @@ var Ball = function () {
   _createClass(Ball, [{
     key: 'draw',
     value: function draw(ctx) {
+      var img = document.getElementById('earth');
+      var pat = ctx.createPattern(img, 'repeat');
       ctx.beginPath();
       ctx.arc(this.ballPosX, this.ballPosY, this.radius, 0, Math.PI * 2, false);
-      ctx.fillStyle = 'white';
+      ctx.fillStyle = pat;
       ctx.fill();
       ctx.closePath();
       if (this.ballVelY !== 0 && this.ballVelX !== 0) {
@@ -505,7 +507,7 @@ var Ball = function () {
       var length = Math.sqrt(this.refl.x * this.refl.x + this.refl.y * this.refl.y);
       this.ballPosY -= 4;
       this.ballVelX = this.refl.x / length * this.speed;
-      this.ballVelY = this.refl.y / length * this.speed * 1.07;
+      this.ballVelY = this.refl.y / length * this.speed * 1.06;
       this.playThud();
     }
   }, {
@@ -733,7 +735,7 @@ var LeftFlipper = function () {
       ctx.moveTo(125, 480);
       ctx.lineTo(215, this.posY);
       ctx.lineWidth = 20;
-      ctx.strokeStyle = '#7E97FF';
+      ctx.strokeStyle = 'black';
       ctx.stroke();
       ctx.closePath();
       this.posY = this.posY;
@@ -797,14 +799,11 @@ var BumperOne = function () {
   }
 
   _createClass(BumperOne, [{
-    key: 'draw',
+    key: "draw",
     value: function draw(ctx) {
       ctx.beginPath();
       ctx.arc(this.ballPosX, this.ballPosY, this.radius, 0, Math.PI * 2, false);
-      var grd = ctx.createLinearGradient(110, 170, 210, 270);
-      grd.addColorStop(0, '#be93c5');
-      grd.addColorStop(1, '#7bc6cc');
-      ctx.fillStyle = grd;
+      ctx.fillStyle = 'black';
       ctx.fill();
       ctx.closePath();
       ctx.font = "40px Bungee Outline";
@@ -843,14 +842,11 @@ var BumperTwo = function () {
   }
 
   _createClass(BumperTwo, [{
-    key: 'draw',
+    key: "draw",
     value: function draw(ctx) {
       ctx.beginPath();
       ctx.arc(this.ballPosX, this.ballPosY, this.radius, 0, Math.PI * 2, false);
-      var grd = ctx.createLinearGradient(180, 180, 360, 360);
-      grd.addColorStop(0, '#be93c5');
-      grd.addColorStop(1, '#7bc6cc');
-      ctx.fillStyle = grd;
+      ctx.fillStyle = 'black';
       ctx.fill();
       ctx.closePath();
       ctx.font = "40px Bungee Outline";
@@ -889,14 +885,11 @@ var BumperThree = function () {
   }
 
   _createClass(BumperThree, [{
-    key: 'draw',
+    key: "draw",
     value: function draw(ctx) {
       ctx.beginPath();
       ctx.arc(this.ballPosX, this.ballPosY, this.radius, 0, Math.PI * 2, false);
-      var grd = ctx.createLinearGradient(90, 90, 280, 280);
-      grd.addColorStop(0, '#7bc6cc');
-      grd.addColorStop(1, '#be93c5');
-      ctx.fillStyle = grd;
+      ctx.fillStyle = 'black';
       ctx.fill();
       ctx.closePath();
       ctx.font = "40px Bungee Outline";
@@ -943,13 +936,10 @@ var LeftBump = function () {
   }
 
   _createClass(LeftBump, [{
-    key: 'draw',
+    key: "draw",
     value: function draw(ctx) {
       ctx.beginPath();
-      var grd = ctx.createLinearGradient(50, 370, 120, 450);
-      grd.addColorStop(0, '#7bc6cc');
-      grd.addColorStop(1, '#be93c5');
-      ctx.fillStyle = grd;
+      ctx.fillStyle = 'black';
       ctx.moveTo(50, 450);
       ctx.lineTo(120, 450);
       ctx.lineTo(50, 370);
@@ -995,13 +985,13 @@ var LeftTriangle = function () {
     key: 'draw',
     value: function draw(ctx) {
       ctx.beginPath();
-      ctx.fillStyle = 'pink';
+      ctx.fillStyle = '#D74F43';
       ctx.moveTo(0, 0);
       ctx.lineTo(60, 0);
       ctx.lineTo(0, 80);
       ctx.fill();
       ctx.beginPath();
-      ctx.fillStyle = 'pink';
+      ctx.fillStyle = '#D74F43';
       ctx.moveTo(0, 570);
       ctx.lineTo(0, 490);
       ctx.lineTo(60, 570);
@@ -1044,13 +1034,10 @@ var LeftBump = function () {
   }
 
   _createClass(LeftBump, [{
-    key: 'draw',
+    key: "draw",
     value: function draw(ctx) {
       ctx.beginPath();
-      var grd = ctx.createLinearGradient(350, 370, 420, 450);
-      grd.addColorStop(0, '#7bc6cc');
-      grd.addColorStop(1, '#be93c5');
-      ctx.fillStyle = grd;
+      ctx.fillStyle = 'black';
       ctx.moveTo(350, 450);
       ctx.lineTo(420, 450);
       ctx.lineTo(420, 370);
@@ -1096,13 +1083,13 @@ var RightTriangle = function () {
     key: 'draw',
     value: function draw(ctx) {
       ctx.beginPath();
-      ctx.fillStyle = 'pink';
+      ctx.fillStyle = '#D74F43';
       ctx.moveTo(410, 0);
       ctx.lineTo(470, 0);
       ctx.lineTo(470, 80);
       ctx.fill();
       ctx.beginPath();
-      ctx.fillStyle = 'pink';
+      ctx.fillStyle = '#D74F43';
       ctx.moveTo(470, 570);
       ctx.lineTo(470, 490);
       ctx.lineTo(410, 570);
@@ -1181,7 +1168,7 @@ var RightFlipper = function () {
       ctx.moveTo(350, 480);
       ctx.lineTo(260, this.posY);
       ctx.lineWidth = 20;
-      ctx.strokeStyle = '#7E97FF';
+      ctx.strokeStyle = 'black';
       ctx.stroke();
       ctx.closePath();
       this.posY = this.posY;
