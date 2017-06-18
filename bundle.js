@@ -414,7 +414,7 @@ var Thruster = __webpack_require__(0);
 
 var ballPosX = 445;
 var ballPosY = 384;
-var gravity = 0.20;
+var gravity = 0.2;
 var elasticity = 0.8;
 var friction = 0.1;
 
@@ -457,8 +457,8 @@ var Ball = function () {
   }, {
     key: 'firstReflect',
     value: function firstReflect(delta) {
-      this.ballVelX = -2.5;
-      this.ballVelY = 3;
+      this.ballVelX = Math.random() * (-2.53 + 2.6) - 2.6;
+      this.ballVelY = Math.random() * (3.4 - 3.1) + 3.1;
     }
   }, {
     key: 'isCollidedWithLine',
@@ -476,17 +476,25 @@ var Ball = function () {
       }
 
       // Distance definitely colliding
-      if (distX <= obj.halfwidth) {
+      if (distX <= obj.halfwidth && this.bouncedTwo === false) {
+        this.changeBounce();
         return true;
       }
-      if (distY <= obj.halfheight) {
+
+      if (distX <= obj.halfheight && this.bouncedTwo === false) {
+        this.changeBounce();
         return true;
       }
 
       // Checks corners using Pythagorean Theorem
       var dx = distX - obj.halfwidth;
       var dy = distY - obj.halfheight;
-      return dx * dx + dy * dy <= this.radius * this.radius;
+      if (dx * dx + dy * dy <= this.radius * this.radius && this.bouncedTwo === false) {
+        this.changeBounce();
+        return true;
+      } else {
+        return false;
+      }
     }
   }, {
     key: 'hitbackFlipper',
@@ -497,7 +505,7 @@ var Ball = function () {
       var length = Math.sqrt(this.refl.x * this.refl.x + this.refl.y * this.refl.y);
       this.ballPosY -= 4;
       this.ballVelX = this.refl.x / length * this.speed;
-      this.ballVelY = this.refl.y / length * this.speed * 1.1;
+      this.ballVelY = this.refl.y / length * this.speed * 1.07;
       this.playThud();
     }
   }, {
@@ -557,9 +565,9 @@ var Ball = function () {
       var length = Math.sqrt(this.refl.x * this.refl.x + this.refl.y * this.refl.y);
 
       // Collision Point between ball and bumper
-      // let cllsnpt = {x: ((this.ballPosX*obj.radius + obj.ballPosX*this.radius)/50),
-      //   y: ((this.ballPosY*obj.radius + obj.ballPosY*this.radius)/50)};
-      //
+      var cllsnpt = { x: (this.ballPosX * obj.radius + obj.ballPosX * this.radius) / 50,
+        y: (this.ballPosY * obj.radius + obj.ballPosY * this.radius) / 50 };
+
       //   // Collision Angle between ball and bumper
       // let angle = Math.atan((cllsnpt.y - this.ballPosY)/(cllsnpt.x - this.ballPosX));
       // if (angle < 0) {
@@ -601,9 +609,9 @@ var Ball = function () {
       this.refl = { x: obj.vnorm.x * dd - this.dnorm.x,
         y: obj.vnorm.y * dd - this.dnorm.y };
       var length = Math.sqrt(this.refl.x * this.refl.x + this.refl.y * this.refl.y);
-      this.ballPosY -= 8;
+      this.ballPosY -= 2;
       this.ballVelX = this.refl.x / length * this.speed;
-      this.ballVelY = this.refl.y / length * this.speed * 1.04;
+      this.ballVelY = this.refl.y / length * this.speed;
       this.playBumpSound();
     }
   }, {
@@ -613,9 +621,9 @@ var Ball = function () {
       this.refl = { x: obj.vnorm.x * dd - this.dnorm.x,
         y: obj.vnorm.y * dd - this.dnorm.y };
       var length = Math.sqrt(this.refl.x * this.refl.x + this.refl.y * this.refl.y);
-      this.ballPosY += 12;
-      this.ballVelX = this.refl.x / length * this.speed * 0.94;
-      this.ballVelY = this.refl.y / length * this.speed * 0.94;
+      this.ballPosY -= 12;
+      this.ballVelX = this.refl.x / length * this.speed;
+      this.ballVelY = this.refl.y / length * this.speed;
     }
   }, {
     key: 'isCollidedwithSideBump',
