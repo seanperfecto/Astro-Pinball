@@ -91,7 +91,7 @@ span {
   font-size: 13px;
 }
 
-#earth {
+#moon, #mars, #neptune, #mercury, #earth {
   display: none;
 }
 

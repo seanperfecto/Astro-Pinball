@@ -436,7 +436,7 @@ var Ball = function () {
   _createClass(Ball, [{
     key: 'draw',
     value: function draw(ctx) {
-      var img = document.getElementById('earth');
+      var img = document.getElementById('moon');
       var pat = ctx.createPattern(img, 'repeat');
       ctx.beginPath();
       ctx.arc(this.ballPosX, this.ballPosY, this.radius, 0, Math.PI * 2, false);
@@ -735,7 +735,7 @@ var LeftFlipper = function () {
       ctx.moveTo(125, 480);
       ctx.lineTo(215, this.posY);
       ctx.lineWidth = 20;
-      ctx.strokeStyle = 'black';
+      ctx.strokeStyle = '#D74F43';
       ctx.stroke();
       ctx.closePath();
       this.posY = this.posY;
@@ -799,16 +799,15 @@ var BumperOne = function () {
   }
 
   _createClass(BumperOne, [{
-    key: "draw",
+    key: 'draw',
     value: function draw(ctx) {
+      var img = document.getElementById('mercury');
+      var merc = ctx.createPattern(img, 'repeat');
       ctx.beginPath();
       ctx.arc(this.ballPosX, this.ballPosY, this.radius, 0, Math.PI * 2, false);
-      ctx.fillStyle = 'black';
+      ctx.fillStyle = merc;
       ctx.fill();
       ctx.closePath();
-      ctx.font = "40px Bungee Outline";
-      ctx.fillStyle = "white";
-      ctx.fillText("5", 142, 234);
     }
   }]);
 
@@ -842,16 +841,15 @@ var BumperTwo = function () {
   }
 
   _createClass(BumperTwo, [{
-    key: "draw",
+    key: 'draw',
     value: function draw(ctx) {
+      var img = document.getElementById('mars');
+      var mars = ctx.createPattern(img, 'repeat');
       ctx.beginPath();
       ctx.arc(this.ballPosX, this.ballPosY, this.radius, 0, Math.PI * 2, false);
-      ctx.fillStyle = 'black';
+      ctx.fillStyle = mars;
       ctx.fill();
       ctx.closePath();
-      ctx.font = "40px Bungee Outline";
-      ctx.fillStyle = "white";
-      ctx.fillText("5", 312, 234);
     }
   }]);
 
@@ -885,16 +883,15 @@ var BumperThree = function () {
   }
 
   _createClass(BumperThree, [{
-    key: "draw",
+    key: 'draw',
     value: function draw(ctx) {
+      var img = document.getElementById('neptune');
+      var nep = ctx.createPattern(img, 'repeat');
       ctx.beginPath();
       ctx.arc(this.ballPosX, this.ballPosY, this.radius, 0, Math.PI * 2, false);
-      ctx.fillStyle = 'black';
+      ctx.fillStyle = nep;
       ctx.fill();
       ctx.closePath();
-      ctx.font = "40px Bungee Outline";
-      ctx.fillStyle = "white";
-      ctx.fillText("7", 228, 136);
     }
   }]);
 
@@ -936,17 +933,16 @@ var LeftBump = function () {
   }
 
   _createClass(LeftBump, [{
-    key: "draw",
+    key: 'draw',
     value: function draw(ctx) {
+      var img = document.getElementById('earth');
+      var earth = ctx.createPattern(img, 'repeat');
       ctx.beginPath();
-      ctx.fillStyle = 'black';
+      ctx.fillStyle = earth;
       ctx.moveTo(50, 450);
       ctx.lineTo(120, 450);
       ctx.lineTo(50, 370);
       ctx.fill();
-      ctx.font = "30px Bungee Outline";
-      ctx.fillStyle = "white";
-      ctx.fillText("3", 60, 430);
     }
   }]);
 
@@ -1034,17 +1030,16 @@ var LeftBump = function () {
   }
 
   _createClass(LeftBump, [{
-    key: "draw",
+    key: 'draw',
     value: function draw(ctx) {
+      var img = document.getElementById('earth');
+      var earth = ctx.createPattern(img, 'repeat');
       ctx.beginPath();
-      ctx.fillStyle = 'black';
+      ctx.fillStyle = earth;
       ctx.moveTo(350, 450);
       ctx.lineTo(420, 450);
       ctx.lineTo(420, 370);
       ctx.fill();
-      ctx.font = "30px Bungee Outline";
-      ctx.fillStyle = "white";
-      ctx.fillText("3", 395, 430);
     }
   }]);
 
@@ -1168,7 +1163,7 @@ var RightFlipper = function () {
       ctx.moveTo(350, 480);
       ctx.lineTo(260, this.posY);
       ctx.lineWidth = 20;
-      ctx.strokeStyle = 'black';
+      ctx.strokeStyle = '#D74F43';
       ctx.stroke();
       ctx.closePath();
       this.posY = this.posY;
