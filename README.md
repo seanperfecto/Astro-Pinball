@@ -1,10 +1,10 @@
-# Minimal Pinball
+# Astro Pinball
 
 [LIVE LINK](https://seanperfecto.github.io/Pinball/)
 
 This pure Javascript and HTML game strips down a classic arcade game into a more visually appealing and simple (yet addicting) web browser game.
 
-![screencast](assets/screencast.png)
+![screencast](http://res.cloudinary.com/dqr2mejhc/image/upload/c_scale,w_671/v1497831590/astro_x2pxnq.png)
 
 ## Instructions
 
