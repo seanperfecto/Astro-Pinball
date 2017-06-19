@@ -1,6 +1,6 @@
 # Astro Pinball
 
-[LIVE LINK](https://seanperfecto.github.io/Pinball/)
+[LIVE LINK](https://seanperfecto.github.io/Astro-Pinball/)
 
 This pure Javascript and HTML game strips down a classic arcade game into a more visually appealing and simple (yet addicting) web browser game.
 
