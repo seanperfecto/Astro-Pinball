@@ -545,8 +545,10 @@ var Ball = function () {
       var distance = Math.sqrt(Math.pow(this.ballPosX - obj.ballPosX, 2) + Math.pow(this.ballPosY - obj.ballPosY, 2));
       if (distance < this.radius + obj.radius && this.bounced === false) {
         this.bounced = true;
+        obj.radius += 1;
         setTimeout(function () {
           _this.bounced = false;
+          obj.radius -= 1;
         }, 200);
         return true;
       } else {
