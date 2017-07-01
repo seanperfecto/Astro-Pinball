@@ -507,13 +507,14 @@ var Ball = function () {
       var length = Math.sqrt(this.refl.x * this.refl.x + this.refl.y * this.refl.y);
       this.ballPosY -= 4;
       this.ballVelX = this.refl.x / length * this.speed;
-      this.ballVelY = this.refl.y / length * this.speed * 1.06;
+      this.ballVelY = this.refl.y / length * this.speed * 1.07;
       this.playThud();
     }
   }, {
     key: 'playThud',
     value: function playThud() {
       var x = document.getElementById('thud');
+      x.currentTime = 0;
       x.play();
     }
   }, {
@@ -596,13 +597,14 @@ var Ball = function () {
       // }
 
       this.ballVelX = this.refl.x / length * this.speed * 1.01;
-      this.ballVelY = this.refl.y / length * this.speed * 1.01;
+      this.ballVelY = this.refl.y / length * this.speed * 1.02;
       this.playBumpSound();
     }
   }, {
     key: 'playBumpSound',
     value: function playBumpSound() {
       var x = document.getElementById('bell');
+      x.currentTime = 0;
       x.volume = 0.3;
       x.play();
     }
@@ -764,6 +766,7 @@ var LeftFlipper = function () {
     key: "playFlip",
     value: function playFlip() {
       var x = document.getElementById('flip');
+      x.currentTime = 0;
       x.play();
     }
   }, {
@@ -1192,6 +1195,7 @@ var RightFlipper = function () {
     key: "playFlip",
     value: function playFlip() {
       var x = document.getElementById('flip');
+      x.currentTime = 0;
       x.play();
     }
   }, {
