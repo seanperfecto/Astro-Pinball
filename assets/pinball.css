@@ -25,6 +25,22 @@ canvas {
   justify-content: center;
 }
 
+.cionic-container {
+  display: flex;
+  justify-content: center;
+}
+
+#log {
+  width:500px; 
+  height:100px;
+  background-color:#fff;
+  color:green;
+  overflow-y:scroll;
+  overflow-x: hidden;
+  border: 1px solid #999;
+  margin: 5px 0px;
+}
+
 .score {
   background-color: #304D5B;
   width: 230px;
@@ -97,4 +113,8 @@ span {
 
 #controls {
   color: #D74F43;
+}
+
+.codeText {
+  color: white;
 }
